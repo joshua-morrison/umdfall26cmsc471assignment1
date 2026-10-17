@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 1</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/RasmusFonseca/d3RangeSlider@master/d3RangeSlider.css">
+
+</head>
+<body>
+    <div role="header">
+    <h1>Geography, Seasons, and Climate</h1>
+    <h2>Write Up</h2>
+    <p>Climate is the average weather over a long period of time. This, as you might expect, is dependent on where you are, and when you are. This visualization aims to show some of the relationships between climate and geography, and some of the relationships between climate and seasons.</p>
+    <p>One way to make a guess at climate is to look at multiple days, rather than only a single day. This is why the graph shows a week’s worth of data.</p>
+    <ol>
+    <li>The first thing you can see, with regards to seasons, is that as you drag the date towards the summer months, average temperature rises, and as you drag the date to the winter months, average temperature drops.</li>
+    <li>The next thing you should see is that the lower your latitude, the higher your temperature. This is because you get more sunlight as you get closer to the equator. However, drag the date along, and you should see something else: the higher latitudes have much bigger swings in temperature. This is because the difference in daylight hours is shorter the closer you are to the equator. At the equator, you get roughly the same amount of sunlight year round.</li>
+    <li>Now, change the location variable to longitude. You should immediately see clusters for Guam (in the top right), the Northern Mariana Islands (in the bottom right), Hawaii (in the top left), and Alaska (below Hawaii). In the summer, temperatures are much closer together. This is for the same reason that higher latitudes have bigger swings in temperature. In the summer, most of the US gets a decent amount of sunlight. In the winter, the northern reaches get almost no sunlight, while the tropics, especially Hawaii and Guam, still get roughly the same amount of sunlight.</li>
+    <li>Change the data variable to gust speed. Now, hover over the right most regions. A tooltip will pop-up, giving you tidbits of information. Look at the gust direction. It should say somewhere around 40 to 90 degrees from North. That is saying that the wind is coming from the east. This wind has a special name: the trade winds. It consistently blows across Guam and the Northern Mariana Islands from east to west. If you change the date , you should see that the gust direction has not changed much. If you can find Hawaii, you should see similar directions as well, because the trade winds also go through Hawaii.</p>
+    <li>Finally, change the location variable to altitude, and the data variable back to temperature. You should see that, as altitude rises, temperature drops. This represents mountains being colder. You can also change the data variable to depth of snowfall, and see how the places that have more snowfall in the winter also continue to have snowfall for longer.</li>
+    <li>Something you might have noticed at this point is the line of dots consistently at 0°F. These are not actually 0°F, rather, these are stations that do not have an average temperature recorded. Change to high or low temperature, and you should see most of these dots disappear.</li>
+    </ol>
+    <p>Those are just a few of the many ways geography, seasons, and climate intersect.</p>
+    <h2>Notes</h2>
+    <ol>
+    <li>The visualization will take a few seconds to load up. By the time you finish reading this writeup, it should be ready to go.</li>
+    <li>It is possible to expand the date slider to cover a broader range. Doing this will drastically slow down the visualization, however, as hundreds of thousands of points have to be drawn. Only do this if you know what you are doing.</li>
+    <li>You may notice a line of dots around the zero mark, especially when looking at average temperature. These are data points whose average temperature was not recorded.</li>
+    <li>The dual sliders were taken from <a href="https://github.com/RasmusFonseca/d3RangeSlider">Rasmus Fonseca</a>, Apache License 2.0. These were made for an older version of d3 and do not work with the current one. I used ChatGPT to find and fix the broken lines in their program so that it would be up to date.</li>
+    </ol>
+    <h2>Video</h2>
+    <video width="500" height="500" controls><source src="media/recording.mp4" type="video/mp4">Video tag not supported.</video>
+    </div>
+    <div class="container" role="main"> <!-- Centers content and sets max width -->
+    <h2>Visualization</h2>
+    <div class="controls">
+        Location (x): <select class="variable xVariable"></select> <span class="locRange"></span>
+        <div class="locSlider"></div>
+        Data (y): <select class="variable yVariable"></select> <span class="datRange"></span>
+        <div class="datSlider"></div>
+        Date Range: <span class="timeRange"></span>
+        <div class="timeSlider"></div>
+    </div>
+    <div>
+        <div class="vis">
+            <div class="tooltip" style="display:none"></div>
+        </div> <!--  Will hold our visualization (SVG) -->
+    </div>
+
+    <!-- Load D3.js -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/dualSlider.js"></script>
+</body>
+</html>
